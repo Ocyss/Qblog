@@ -2,7 +2,8 @@ package main
 
 import (
 	"context"
-	statistics "github.com/Ocyss/Qblog/kitex_gen/statistics"
+
+	"github.com/Ocyss/Qblog/kitex_gen/statistics"
 
 	"github.com/Ocyss/Qblog/cmd/statistics/biz/service"
 )
