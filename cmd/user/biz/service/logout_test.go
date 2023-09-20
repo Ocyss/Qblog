@@ -4,7 +4,7 @@ import (
 	"context"
 	"testing"
 
-	user "github.com/Ocyss/Qblog/kitex_gen/user"
+	"github.com/Ocyss/Qblog/kitex_gen/user"
 )
 
 func TestUserService_Logout(t *testing.T) {

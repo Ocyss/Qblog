@@ -2,8 +2,9 @@ package service
 
 import (
 	"context"
-	user "github.com/Ocyss/Qblog/kitex_gen/user"
 	"testing"
+
+	"github.com/Ocyss/Qblog/kitex_gen/user"
 )
 
 func TestUserService_Login(t *testing.T) {
@@ -18,5 +19,4 @@ func TestUserService_Login(t *testing.T) {
 		t.Errorf("unexpected nil response")
 	}
 	// todo: edit your unit test
-
 }

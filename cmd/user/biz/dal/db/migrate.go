@@ -1,5 +1,5 @@
 package db
 
 func autoMigrate() error {
-	return db.AutoMigrate()
+	return db.AutoMigrate(&User{})
 }

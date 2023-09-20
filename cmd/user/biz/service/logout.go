@@ -1,13 +1,17 @@
 package service
 
 import (
-	common "github.com/Ocyss/Qblog/kitex_gen/common"
-	user "github.com/Ocyss/Qblog/kitex_gen/user"
+	"github.com/Ocyss/Qblog/cmd/user/biz/dal/db"
+	"github.com/Ocyss/Qblog/kitex_gen/common"
+	"github.com/Ocyss/Qblog/kitex_gen/user"
+	"github.com/Ocyss/Qblog/pkg/utils/tokens"
 )
 
 func (s *UserService) Logout(request *user.UserLogoutReq) (resp *common.EmptyStruct, err error) {
-	resp = new(common.EmptyStruct)
-	// TODO UserService.Logout Finish your business logic.
-
+	claims, err := tokens.CheckToken(request.Token)
+	if err != nil {
+		return
+	}
+	err = db.DeleteUser(s.ctx, claims.Username, false)
 	return
 }
