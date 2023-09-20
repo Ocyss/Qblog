@@ -23,6 +23,6 @@ func (s *StatisticsService) Article(request *statistics.StatisticsArticleReq) (r
 		request.Id = articleIdUriResp.Id
 	}
 	uv, pv, err := redis.GetUvPv(s.ctx, uint(request.Id), request.Ua)
-	resp = &statistics.StatisticsArticleResp{Pv: int32(pv), Uv: int32(uv)}
+	resp = &statistics.StatisticsArticleResp{Pv: pv, Uv: uv}
 	return
 }

@@ -28,7 +28,7 @@ func (s *UserService) Register(request *user.UserRegisterReq) (resp *user.UserRe
 	}
 	resp = &user.UserRegisterResp{
 		Token: token,
-		Uid:   int32(uid),
+		Uid:   int64(uid),
 	}
 	return
 }

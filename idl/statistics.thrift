@@ -4,14 +4,14 @@ namespace go statistics
 include "common.thrift"
 
 struct StatisticsArticleReq{
-    i32 id
+    i64 id
     string uri
     optional string ua
 }
 
 struct StatisticsArticleResp{
-    i32 pv
-    i32 uv
+    i64 pv
+    i64 uv
 }
 
 service StatisticsService {

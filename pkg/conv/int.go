@@ -1,6 +1,6 @@
 package conv
 
-func ToUint(v *int32) *uint {
+func ToUint(v *int64) *uint {
 	if v == nil {
 		return nil
 	}
@@ -8,10 +8,10 @@ func ToUint(v *int32) *uint {
 	return &res
 }
 
-func ToInt32(v *uint) *int32 {
+func ToInt64(v *uint) *int64 {
 	if v == nil {
 		return nil
 	}
-	res := int32(*v)
+	res := int64(*v)
 	return &res
 }

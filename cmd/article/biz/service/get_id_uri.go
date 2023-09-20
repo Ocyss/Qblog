@@ -10,6 +10,6 @@ func (s *ArticleService) GetIdUri(request *article.ArticleIdUriReq) (resp *artic
 	if err != nil {
 		return
 	}
-	resp = &article.ArticleIdUriResp{Uri: uri, Id: int32(id)}
+	resp = &article.ArticleIdUriResp{Uri: uri, Id: int64(id)}
 	return
 }

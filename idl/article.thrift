@@ -9,50 +9,50 @@ struct articleEdit{
     string content
     string image
     list<string> tags
-    optional i32 category
+    optional i64 category
     bool show
 }
 
 struct article{
-   i32 aid
+   i64 aid
    string uri
    string title
    string introduce
    string content
    string image
    list<string> tags
-   optional i32 category
+   optional i64 category
    bool show
-   i32 uv
-   i32 pv
-   i32 createTime
-   i32 updateTime
+   i64 uv
+   i64 pv
+   i64 createTime
+   i64 updateTime
 }
 
 struct ArticleCreateReq{
-    i32 userid
+    i64 userid
     articleEdit data
 }
 
 struct ArticleCreateResp{
-    i32 aid
+    i64 aid
     string uri
 }
 
 struct ArticleEditReq{
-    i32 aid
+    i64 aid
     string uri
     articleEdit data
 }
 
 struct ArticleDeleteReq{
-    i32 aid
+    i64 aid
     string uri
     optional bool isDelete
 }
 
 struct ArticleReq{
-    i32 aid
+    i64 aid
     string uri
 }
 
@@ -61,10 +61,10 @@ struct ArticleResp{
 }
 
 struct ArticlesReq{
-    i32 pageSize (vt.le = "20")
-    i32 pageNum
-    i32 category
-    i32 tag
+    i64 pageSize (vt.le = "20")
+    i64 pageNum
+    i64 category
+    i64 tag
 }
 
 struct ArticlesResp{
@@ -72,7 +72,7 @@ struct ArticlesResp{
 }
 
 struct Category {
-    i32 id
+    i64 id
     string name
     bool showOnHome
     list<Category> categorys
@@ -83,12 +83,12 @@ struct CategorysResp {
 }
 
 struct ArticleIdUriReq{
-    i32 id
+    i64 id
     string uri
 }
 
 struct ArticleIdUriResp{
-    i32 id
+    i64 id
     string uri
 }
 

@@ -9,7 +9,7 @@ struct UserLoginReq {
 }
 
 struct UserLoginResp {
-    i32 uid
+    i64 uid
     string token
 }
 
@@ -20,7 +20,7 @@ struct UserRegisterReq {
 }
 
 struct UserRegisterResp {
-    i32 uid
+    i64 uid
     string token
 }
 

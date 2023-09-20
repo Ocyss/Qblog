@@ -10,19 +10,19 @@ func (s *ArticleService) Get(request *article.ArticleReq) (resp *article.Article
 	resp = new(article.ArticleResp)
 	data, err := db.GetArticle(s.ctx, uint(request.Aid), request.Uri)
 	resp.Article = &article.Article{
-		Aid:        int32(data.ID),
+		Aid:        int64(data.ID),
 		Uri:        data.Uri,
 		Title:      data.Title,
 		Introduce:  data.Introduce,
 		Content:    data.Content,
 		Image:      data.Image,
 		Tags:       ToTagsStrings(data.Tags),
-		Category:   conv.ToInt32(data.CategoryID),
+		Category:   conv.ToInt64(data.CategoryID),
 		Show:       data.Show,
 		Uv:         0,
 		Pv:         0,
-		CreateTime: int32(data.CreatedAt.Unix()),
-		UpdateTime: int32(data.UpdatedAt.Unix()),
+		CreateTime: data.CreatedAt.Unix(),
+		UpdateTime: data.UpdatedAt.Unix(),
 	}
 	return
 }

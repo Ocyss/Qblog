@@ -15,19 +15,19 @@ func (s *ArticleService) GetList(request *article.ArticlesReq) (resp *article.Ar
 	articles := make([]*article.Article, len(datas))
 	for i, data := range datas {
 		articles[i] = &article.Article{
-			Aid:        int32(data.ID),
+			Aid:        int64(data.ID),
 			Uri:        data.Uri,
 			Title:      data.Title,
 			Introduce:  data.Introduce,
 			Content:    data.Content,
 			Image:      data.Image,
 			Tags:       ToTagsStrings(data.Tags),
-			Category:   conv.ToInt32(data.CategoryID),
+			Category:   conv.ToInt64(data.CategoryID),
 			Show:       data.Show,
 			Uv:         0,
 			Pv:         0,
-			CreateTime: int32(data.CreatedAt.Unix()),
-			UpdateTime: int32(data.UpdatedAt.Unix()),
+			CreateTime: data.CreatedAt.Unix(),
+			UpdateTime: data.UpdatedAt.Unix(),
 		}
 	}
 	resp.Articles = articles

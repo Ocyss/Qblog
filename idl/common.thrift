@@ -8,7 +8,7 @@ enum Role {
 }
 
 exception RequestException{
-    required i32 code;
+    required i64 code;
     string msg;
 }
 

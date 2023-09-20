@@ -21,7 +21,7 @@ func (s *ArticleService) Create(request *article.ArticleCreateReq) (resp *articl
 	if err != nil {
 		return
 	}
-	resp.Aid = int32(data.ID)
+	resp.Aid = int64(data.ID)
 	resp.Uri = data.Uri
 	return
 }

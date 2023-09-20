@@ -22,7 +22,7 @@ func (s *UserService) Login(request *user.UserLoginReq) (resp *user.UserLoginRes
 	token, err := tokens.GetToken(dbUser.ID, dbUser.Username)
 	resp = &user.UserLoginResp{
 		Token: token,
-		Uid:   int32(dbUser.ID),
+		Uid:   int64(dbUser.ID),
 	}
 	return
 }

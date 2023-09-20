@@ -8,6 +8,7 @@ struct CommentCreateReq{
     string uri
     string content
     optional i64 reply
+    optional i64 father
 }
 
 service CommentService {

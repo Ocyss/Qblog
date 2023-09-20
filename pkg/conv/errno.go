@@ -7,7 +7,7 @@ import (
 )
 
 type Response struct {
-	Code int32
+	Code int64
 	Msg  string
 }
 
