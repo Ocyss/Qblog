@@ -1,0 +1,40 @@
+package db
+
+import (
+	"github.com/Ocyss/Qblog/pkg/configs"
+	"github.com/cloudwego/kitex/pkg/klog"
+	"gorm.io/driver/postgres"
+	"gorm.io/gorm"
+	"gorm.io/gorm/logger"
+)
+
+var db *gorm.DB
+
+func Init() {
+	var err error
+	logLevel := logger.Silent
+	if configs.GetApp().Mode == "dev" || configs.GetApp().Mode == "debug" {
+		logLevel = logger.Info
+	}
+	db, err = gorm.Open(postgres.New(postgres.Config{
+		DSN:                  configs.GetDb().Pgsql.Dsn,
+		PreferSimpleProtocol: true, // disables implicit prepared statement usage
+	}), &gorm.Config{
+		PrepareStmt:            true,
+		SkipDefaultTransaction: true,
+		Logger:                 logger.Default.LogMode(logLevel),
+	})
+
+	if err != nil {
+		klog.Fatal(err)
+	}
+
+	err = autoMigrate()
+	if err != nil {
+		klog.Fatal(err)
+	}
+}
+
+func id(id uint) gorm.Model {
+	return gorm.Model{ID: id}
+}

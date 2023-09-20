@@ -12,7 +12,12 @@ body: |-
         {{- else if or (eq $path "github.com/cloudwego/kitex/client") (eq $path "github.com/cloudwego/kitex/pkg/serviceinfo")}}
   		{{- else}}
   			{{- range $alias, $is := $aliases}}
-  				{{$alias}} "{{$path}}"
+                {{ $basePath := base $path }}
+                {{- if eq $basePath $alias }}
+  				  "{{$path}}"
+                {{- else}}
+                  {{$alias}} "{{$path}}"
+                {{- end}}
   			{{- end}}
   		{{- end}}
   	{{- end}}
