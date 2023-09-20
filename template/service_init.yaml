@@ -1,0 +1,19 @@
+path: biz/service/init.go
+loop_method: true
+update_behavior:
+  type: cover
+body: |-
+  package service
+
+  import (
+    "context"
+  )
+
+  type {{.ServiceName}} struct {
+    ctx context.Context
+  }
+
+  // New{{.ServiceName}} new {{.ServiceName}}
+  func New{{.ServiceName}}(ctx context.Context) *{{.ServiceName}} {
+    return &{{.ServiceName}}{ctx: ctx}
+  }

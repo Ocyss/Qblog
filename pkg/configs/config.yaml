@@ -1,0 +1,46 @@
+App:
+  Mode: prod
+  Jwt: 123
+
+Registry:
+  Address:
+    - localhost:2379
+  Username: ""
+  Password: ""
+
+Db:
+  Pgsql:
+    dsn: "host=localhost user=root password=123 dbname=Qblog port=5432 sslmode=disable TimeZone=Asia/Shanghai"
+  Redis:
+    Address: localhost:6379
+    Password:
+    Db: 3
+
+Oss:
+  - name: qiniu
+    AccessKey:
+    SecretKey:
+    Bucket:
+    Sever:
+  - name: aliyun
+    AccessKeyId:
+    AccessKeySecret:
+    Endpoint:
+    BucketName:
+
+Push:
+  # 企业微信推送
+  # 需要注意企业微信，后面新建的应用必须要ip白名单，不然用不了
+  WxPush:
+    CorpId:
+    Agentid:
+    Secret:
+  # 邮箱
+  Email:
+    # 发送方和授权码
+    From:
+    Password:
+    # 不填默认发给自己,还可以用,来发送给多个人
+    To:
+    Host:
+    Port:

@@ -1,0 +1,9 @@
+path: biz/dal/db/migrate.go
+update_behavior:
+  type: skip
+body: |-
+  package db
+  
+  func autoMigrate() error {
+    return db.AutoMigrate()
+  }

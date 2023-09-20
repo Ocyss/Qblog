@@ -1,0 +1,16 @@
+App:
+  Mode: dev
+
+Db:
+  Pgsql:
+    dsn: "host=localhost user=ocyss password=wsad123.. dbname=qblog port=5432 sslmode=disable TimeZone=Asia/Shanghai"
+  Redis:
+    Address: localhost:6379
+    Password:
+
+Oss:
+  - name: aliyun
+    AccessKeyId:
+    AccessKeySecret:
+    Endpoint:
+    BucketName:

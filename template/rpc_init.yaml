@@ -1,0 +1,9 @@
+path: biz/rpc/rpc.go
+update_behavior:
+  type: skip
+body: |-
+  package rpc
+  
+  func Init() {
+    
+  }

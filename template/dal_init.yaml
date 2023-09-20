@@ -1,0 +1,15 @@
+path: biz/dal/init.go
+update_behavior:
+  type: cover
+body: |-
+  package dal
+  
+  import (
+    "{{.Module}}/cmd/{{env "PWD" | osBase}}/biz/dal/db"
+    "{{.Module}}/cmd/{{env "PWD" | osBase}}/biz/dal/redis"
+  )
+  
+  func Init() {
+    db.Init()
+    redis.Init()
+  }

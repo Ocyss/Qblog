@@ -1,0 +1,50 @@
+path: biz/service/{{ SnakeString (index .Methods 0).Name }}.go
+loop_method: true
+update_behavior:
+  type: skip
+body: |-
+  package service
+
+  import (
+  	{{- range $path, $aliases := ( FilterImports .Imports .Methods )}}
+  		{{- if not $aliases }}
+  			"{{$path}}"
+        {{- else if or (eq $path "github.com/cloudwego/kitex/client") (eq $path "github.com/cloudwego/kitex/pkg/serviceinfo")}}
+  		{{- else}}
+  			{{- range $alias, $is := $aliases}}
+  				{{$alias}} "{{$path}}"
+  			{{- end}}
+  		{{- end}}
+  	{{- end}}
+  )
+
+  {{range .Methods}}
+
+  {{- if or .ClientStreaming .ServerStreaming}}
+  
+  func (s *{{.ServiceName}}) {{.Name}}({{if not .ClientStreaming}}{{range .Args}}{{LowerFirst .Name}} {{.Type}}, {{end}}{{end}}stream {{.PkgRefName}}.{{.ServiceName}}_{{.RawName}}Server) (err error) {
+    // TODO {{.ServiceName}}.{{.Name}} Finish your business logic.
+    return
+  }
+  
+  {{- else}}
+  {{- if .Void}}
+  {{- if .Oneway}}
+  {{- end}}
+
+  func (s *{{.ServiceName}}) {{.Name}}({{range .Args}}{{LowerFirst .Name}} {{.Type}}{{end}}) error {
+    // TODO {{.ServiceName}}.{{.Name}} Finish your business logic.
+
+    return nil
+  }
+  {{else -}}
+
+  func (s *{{.ServiceName}}) {{.Name}}({{range .Args}}{{LowerFirst .Name}} {{.Type}}{{end}}) (resp {{.Resp.Type}}, err error) {
+    resp = new({{NotPtr .Resp.Type}})
+    // TODO {{.ServiceName}}.{{.Name}} Finish your business logic.
+    
+    return
+  }
+  {{end}}
+  {{end}}
+  {{end}}
