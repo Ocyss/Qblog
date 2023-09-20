@@ -1,13 +1,16 @@
 package service
 
 import (
-	article "github.com/Ocyss/Qblog/kitex_gen/article"
-	common "github.com/Ocyss/Qblog/kitex_gen/common"
+	"github.com/Ocyss/Qblog/cmd/article/biz/dal/db"
+	"github.com/Ocyss/Qblog/kitex_gen/article"
+	"github.com/Ocyss/Qblog/kitex_gen/common"
 )
 
 func (s *ArticleService) Delete(request *article.ArticleDeleteReq) (resp *common.EmptyStruct, err error) {
-	resp = new(common.EmptyStruct)
-	// TODO ArticleService.Delete Finish your business logic.
-
+	del := false
+	if request.IsDelete != nil {
+		del = *request.IsDelete
+	}
+	err = db.DeleteArticle(s.ctx, uint(request.Aid), request.Uri, del)
 	return
 }

@@ -1,12 +1,35 @@
 package service
 
 import (
-	article "github.com/Ocyss/Qblog/kitex_gen/article"
+	"github.com/Ocyss/Qblog/cmd/article/biz/dal/db"
+	"github.com/Ocyss/Qblog/kitex_gen/article"
+	"github.com/Ocyss/Qblog/pkg/conv"
 )
 
 func (s *ArticleService) GetList(request *article.ArticlesReq) (resp *article.ArticlesResp, err error) {
 	resp = new(article.ArticlesResp)
-	// TODO ArticleService.GetList Finish your business logic.
-
+	datas, err := db.GetArticleList(s.ctx, int(request.PageSize), int(request.PageNum), int(request.Category), int(request.Tag))
+	if err != nil {
+		return
+	}
+	articles := make([]*article.Article, len(datas))
+	for i, data := range datas {
+		articles[i] = &article.Article{
+			Aid:        int32(data.ID),
+			Uri:        data.Uri,
+			Title:      data.Title,
+			Introduce:  data.Introduce,
+			Content:    data.Content,
+			Image:      data.Image,
+			Tags:       ToTagsStrings(data.Tags),
+			Category:   conv.ToInt32(data.CategoryID),
+			Show:       data.Show,
+			Uv:         0,
+			Pv:         0,
+			CreateTime: int32(data.CreatedAt.Unix()),
+			UpdateTime: int32(data.UpdatedAt.Unix()),
+		}
+	}
+	resp.Articles = articles
 	return
 }

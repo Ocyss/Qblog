@@ -4,7 +4,7 @@ import (
 	"context"
 	"testing"
 
-	article "github.com/Ocyss/Qblog/kitex_gen/article"
+	"github.com/Ocyss/Qblog/kitex_gen/article"
 )
 
 func TestArticleService_Delete(t *testing.T) {

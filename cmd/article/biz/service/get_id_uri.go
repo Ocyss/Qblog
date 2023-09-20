@@ -1,12 +1,15 @@
 package service
 
 import (
-	article "github.com/Ocyss/Qblog/kitex_gen/article"
+	"github.com/Ocyss/Qblog/cmd/article/biz/dal/db"
+	"github.com/Ocyss/Qblog/kitex_gen/article"
 )
 
 func (s *ArticleService) GetIdUri(request *article.ArticleIdUriReq) (resp *article.ArticleIdUriResp, err error) {
-	resp = new(article.ArticleIdUriResp)
-	// TODO ArticleService.GetIdUri Finish your business logic.
-
+	id, uri, err := db.GetIdUri(s.ctx, uint(request.Id), request.Uri)
+	if err != nil {
+		return
+	}
+	resp = &article.ArticleIdUriResp{Uri: uri, Id: int32(id)}
 	return
 }

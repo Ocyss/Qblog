@@ -1,7 +1,7 @@
 package service
 
 import (
-	article "github.com/Ocyss/Qblog/kitex_gen/article"
+	"github.com/Ocyss/Qblog/kitex_gen/article"
 )
 
 func (s *ArticleService) GetCategoryList() (resp *article.CategorysResp, err error) {

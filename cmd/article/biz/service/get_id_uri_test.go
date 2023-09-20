@@ -2,8 +2,9 @@ package service
 
 import (
 	"context"
-	article "github.com/Ocyss/Qblog/kitex_gen/article"
 	"testing"
+
+	"github.com/Ocyss/Qblog/kitex_gen/article"
 )
 
 func TestArticleService_GetIdUri(t *testing.T) {
@@ -18,5 +19,4 @@ func TestArticleService_GetIdUri(t *testing.T) {
 		t.Errorf("unexpected nil response")
 	}
 	// todo: edit your unit test
-
 }

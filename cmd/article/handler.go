@@ -2,8 +2,9 @@ package main
 
 import (
 	"context"
-	article "github.com/Ocyss/Qblog/kitex_gen/article"
-	common "github.com/Ocyss/Qblog/kitex_gen/common"
+
+	"github.com/Ocyss/Qblog/kitex_gen/article"
+	"github.com/Ocyss/Qblog/kitex_gen/common"
 
 	"github.com/Ocyss/Qblog/cmd/article/biz/service"
 )
