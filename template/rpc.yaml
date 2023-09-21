@@ -1,0 +1,49 @@
+path: ../../pkg/rpc/{{ReplaceString .ServiceName "Service" "" 1 | ToLower}}_client.go
+update_behavior:
+  type: cover
+body: |-
+  package rpc
+  {{$service := ReplaceString .ServiceName "Service" "" 1}}
+  import (
+    "time"
+  
+    "{{.Module}}/pkg/constants"
+  
+    "{{.Module}}/pkg/configs"
+    "{{.Module}}/pkg/middleware"
+  
+    "{{.Module}}/kitex_gen/{{ToLower $service}}/{{ToLower $service}}service"
+
+    "github.com/cloudwego/kitex/client"
+    "github.com/cloudwego/kitex/pkg/klog"
+    "github.com/cloudwego/kitex/pkg/retry"
+    etcd "github.com/kitex-contrib/registry-etcd"
+    trace "github.com/kitex-contrib/tracer-opentracing"
+    )
+  
+    type {{$service}}Client struct {
+      {{ToLower $service}}service.Client
+    }
+  
+    func New{{$service}}Client() *{{$service}}Client {
+      r, err := etcd.NewEtcdResolver(configs.GetRegistry().Address)
+      if err != nil {
+        klog.Fatalf("new resolver failed: %v", err.Error())
+      }
+  
+      c, err := {{ToLower $service}}service.NewClient(constants.{{.ServiceName}}Name,
+      client.WithMiddleware(middleware.CommonMiddleware),
+      client.WithMiddleware(middleware.ClientMiddleware),
+      client.WithMuxConnection(1),                       // mux
+      client.WithRPCTimeout(5*time.Second),              // rpc timeout
+      client.WithConnectTimeout(100*time.Millisecond),   // conn timeout
+      client.WithFailureRetry(retry.NewFailurePolicy()), // retry
+      client.WithSuite(trace.NewDefaultClientSuite()),   // tracer
+      client.WithResolver(r),
+      )
+      if err != nil {
+        klog.Fatalf("new %s client failed: %v", constants.{{.ServiceName}}Name, err.Error())
+      }
+  
+      return &{{$service}}Client{Client: c}
+  }
