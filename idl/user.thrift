@@ -3,6 +3,13 @@ namespace go user
 
 include "common.thrift"
 
+struct User{
+    optional i64 uid
+    string name
+    string email
+    string qq
+}
+
 struct UserLoginReq {
     string username (vt.min_size = "3", vt.max_size = "32")
     string password (vt.min_size = "3", vt.max_size = "32")

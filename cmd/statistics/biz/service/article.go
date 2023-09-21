@@ -18,7 +18,7 @@ func (s *StatisticsService) Article(request *statistics.StatisticsArticleReq) (r
 		}
 		articleIdUriResp, err := rpc.Article.GetIdUri(s.ctx, &article.ArticleIdUriReq{Uri: request.Uri})
 		if err != nil {
-			return
+			return nil, err
 		}
 		request.Id = articleIdUriResp.Id
 	}

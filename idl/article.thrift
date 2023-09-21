@@ -100,4 +100,5 @@ service ArticleService {
     ArticlesResp GetList(ArticlesReq request) throws(common.RequestException qe) (api.get="/article/getlist");
     CategorysResp GetCategoryList() throws(common.RequestException qe) (api.get="/article/categorys");
     ArticleIdUriResp GetIdUri(ArticleIdUriReq request) throws(common.RequestException qe)
+    void CheckIdUri(ArticleIdUriReq request) throws(common.RequestException qe)
 }
