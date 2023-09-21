@@ -2,9 +2,8 @@ package service
 
 import (
 	"context"
+	user "github.com/Ocyss/Qblog/kitex_gen/user"
 	"testing"
-
-	"github.com/Ocyss/Qblog/kitex_gen/user"
 )
 
 func TestUserService_Register(t *testing.T) {
@@ -18,5 +17,6 @@ func TestUserService_Register(t *testing.T) {
 	if resp == nil {
 		t.Errorf("unexpected nil response")
 	}
-	// todo: edit your unit test
+	// TEST: edit your unit test
+
 }

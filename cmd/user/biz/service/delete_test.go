@@ -4,7 +4,7 @@ import (
 	"context"
 	"testing"
 
-	"github.com/Ocyss/Qblog/kitex_gen/user"
+	user "github.com/Ocyss/Qblog/kitex_gen/user"
 )
 
 func TestUserService_Delete(t *testing.T) {
@@ -18,5 +18,5 @@ func TestUserService_Delete(t *testing.T) {
 	if resp == nil {
 		t.Errorf("unexpected nil response")
 	}
-	// todo: edit your unit test
+	// TEST: edit your unit test
 }

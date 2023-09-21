@@ -60,3 +60,10 @@ func (s *ArticleServiceImpl) GetIdUri(ctx context.Context, request *article.Arti
 	resp, err = articleService.GetIdUri(request)
 	return
 }
+
+// CheckIdUri implements the ArticleServiceImpl interface.
+func (s *ArticleServiceImpl) CheckIdUri(ctx context.Context, request *article.ArticleIdUriReq) (err error) {
+	articleService := service.NewArticleService(ctx)
+	err = articleService.CheckIdUri(request)
+	return
+}

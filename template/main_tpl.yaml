@@ -14,10 +14,10 @@ body: |-
     tracer2 "github.com/Ocyss/Qblog/pkg/tracer"
     "github.com/cloudwego/kitex/pkg/limit"
     trace "github.com/kitex-contrib/tracer-opentracing"
-    
-    "github.com/Ocyss/Qblog/cmd/{{env "PWD" | osBase}}/biz/dal"
-    "github.com/Ocyss/Qblog/cmd/{{env "PWD" | osBase}}/biz/rpc"
-    "github.com/Ocyss/Qblog/pkg/middleware"
+  
+    "{{.Module}}/cmd/{{env "PWD" | osBase}}/biz/dal"
+    "{{.Module}}/cmd/{{env "PWD" | osBase}}/biz/rpc"
+    "{{.Module}}/pkg/middleware"
     
     "github.com/Ocyss/Qblog/pkg/configs"
     
