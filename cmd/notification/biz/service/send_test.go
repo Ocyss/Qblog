@@ -18,5 +18,5 @@ func TestNotificationService_Send(t *testing.T) {
 	if resp == nil {
 		t.Errorf("unexpected nil response")
 	}
-	// todo: edit your unit test
+	// TEST: edit your unit test
 }

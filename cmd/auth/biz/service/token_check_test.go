@@ -4,7 +4,7 @@ import (
 	"context"
 	"testing"
 
-	"github.com/Ocyss/Qblog/kitex_gen/auth"
+	auth "github.com/Ocyss/Qblog/kitex_gen/auth"
 )
 
 func TestAuthService_TokenCheck(t *testing.T) {
@@ -18,5 +18,5 @@ func TestAuthService_TokenCheck(t *testing.T) {
 	if resp == nil {
 		t.Errorf("unexpected nil response")
 	}
-	// todo: edit your unit test
+	// TEST: edit your unit test
 }

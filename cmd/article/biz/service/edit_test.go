@@ -4,7 +4,7 @@ import (
 	"context"
 	"testing"
 
-	"github.com/Ocyss/Qblog/kitex_gen/article"
+	article "github.com/Ocyss/Qblog/kitex_gen/article"
 )
 
 func TestArticleService_Edit(t *testing.T) {
@@ -18,5 +18,5 @@ func TestArticleService_Edit(t *testing.T) {
 	if resp == nil {
 		t.Errorf("unexpected nil response")
 	}
-	// todo: edit your unit test
+	// TEST: edit your unit test
 }

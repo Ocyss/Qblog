@@ -2,9 +2,8 @@ package service
 
 import (
 	"context"
+	article "github.com/Ocyss/Qblog/kitex_gen/article"
 	"testing"
-
-	"github.com/Ocyss/Qblog/kitex_gen/article"
 )
 
 func TestArticleService_Get(t *testing.T) {
@@ -18,5 +17,6 @@ func TestArticleService_Get(t *testing.T) {
 	if resp == nil {
 		t.Errorf("unexpected nil response")
 	}
-	// todo: edit your unit test
+	// TEST: edit your unit test
+
 }

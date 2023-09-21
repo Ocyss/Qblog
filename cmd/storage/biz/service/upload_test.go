@@ -2,9 +2,8 @@ package service
 
 import (
 	"context"
+	storage "github.com/Ocyss/Qblog/kitex_gen/storage"
 	"testing"
-
-	"github.com/Ocyss/Qblog/kitex_gen/storage"
 )
 
 func TestStorageService_Upload(t *testing.T) {
@@ -18,5 +17,6 @@ func TestStorageService_Upload(t *testing.T) {
 	if resp == nil {
 		t.Errorf("unexpected nil response")
 	}
-	// todo: edit your unit test
+	// TEST: edit your unit test
+
 }

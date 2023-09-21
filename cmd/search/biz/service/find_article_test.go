@@ -2,9 +2,8 @@ package service
 
 import (
 	"context"
+	search "github.com/Ocyss/Qblog/kitex_gen/search"
 	"testing"
-
-	"github.com/Ocyss/Qblog/kitex_gen/search"
 )
 
 func TestSearchService_FindArticle(t *testing.T) {
@@ -18,5 +17,6 @@ func TestSearchService_FindArticle(t *testing.T) {
 	if resp == nil {
 		t.Errorf("unexpected nil response")
 	}
-	// todo: edit your unit test
+	// TEST: edit your unit test
+
 }
