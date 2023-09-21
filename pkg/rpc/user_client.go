@@ -3,10 +3,13 @@ package rpc
 import (
 	"time"
 
+	"github.com/Ocyss/Qblog/pkg/constants"
+
 	"github.com/Ocyss/Qblog/pkg/configs"
 	"github.com/Ocyss/Qblog/pkg/middleware"
 
 	"github.com/Ocyss/Qblog/kitex_gen/user/userservice"
+
 	"github.com/cloudwego/kitex/client"
 	"github.com/cloudwego/kitex/pkg/klog"
 	"github.com/cloudwego/kitex/pkg/retry"
@@ -24,7 +27,7 @@ func NewUserClient() *UserClient {
 		klog.Fatalf("new resolver failed: %v", err.Error())
 	}
 
-	c, err := userservice.NewClient("user",
+	c, err := userservice.NewClient(constants.UserServiceName,
 		client.WithMiddleware(middleware.CommonMiddleware),
 		client.WithMiddleware(middleware.ClientMiddleware),
 		client.WithMuxConnection(1),                       // mux
@@ -35,7 +38,7 @@ func NewUserClient() *UserClient {
 		client.WithResolver(r),
 	)
 	if err != nil {
-		klog.Fatalf("new user client failed: %v", err.Error())
+		klog.Fatalf("new %s client failed: %v", constants.UserServiceName, err.Error())
 	}
 
 	return &UserClient{Client: c}
