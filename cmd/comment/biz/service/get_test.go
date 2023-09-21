@@ -2,16 +2,15 @@ package service
 
 import (
 	"context"
-	"testing"
-
 	comment "github.com/Ocyss/Qblog/kitex_gen/comment"
+	"testing"
 )
 
-func TestCommentService_Create(t *testing.T) {
+func TestCommentService_Get(t *testing.T) {
 	s := NewCommentService(context.Background())
 
-	request := &comment.CommentCreateReq{}
-	resp, err := s.Create(request)
+	request := &comment.CommentListReq{}
+	resp, err := s.Get(request)
 	if err != nil {
 		t.Errorf("unexpected error: %v", err)
 	}
@@ -19,4 +18,5 @@ func TestCommentService_Create(t *testing.T) {
 		t.Errorf("unexpected nil response")
 	}
 	// TEST: edit your unit test
+
 }

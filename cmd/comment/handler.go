@@ -18,3 +18,10 @@ func (s *CommentServiceImpl) Create(ctx context.Context, request *comment.Commen
 	resp, err = commentService.Create(request)
 	return
 }
+
+// Get implements the CommentServiceImpl interface.
+func (s *CommentServiceImpl) Get(ctx context.Context, request *comment.CommentListReq) (resp *comment.CommentListResp, err error) {
+	commentService := service.NewCommentService(ctx)
+	resp, err = commentService.Get(request)
+	return
+}
